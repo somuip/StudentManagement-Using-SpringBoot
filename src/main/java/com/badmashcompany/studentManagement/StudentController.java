@@ -1,6 +1,8 @@
 package com.badmashcompany.studentManagement;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -19,9 +21,9 @@ public class StudentController {
     }
 
     @PostMapping("/add")
-    String addStudent(@RequestBody() Student student){
+    ResponseEntity addStudent(@RequestBody() Student student){
         service.addStudent(student);
-        return "Added";
+        return new ResponseEntity<>("Added", HttpStatus.CREATED);
     }
 
 //    @DeleteMapping("/delete/{q}")
